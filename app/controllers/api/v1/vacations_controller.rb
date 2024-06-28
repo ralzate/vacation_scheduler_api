@@ -2,8 +2,15 @@ class Api::V1::VacationsController < ApplicationController
   before_action :set_vacation, only: [:show, :update, :destroy]
   
   def index
-    @vacations = Vacation.all
-    render json: @vacations
+    @vacations = Vacation.paginate(page: params[:page], per_page: params[:per_page])
+    
+    render json: {
+      vacations: @vacations,
+      meta: {
+        total_pages: @vacations.total_pages,
+        current_page: @vacations.current_page
+      }
+    }
   end
 
   def show
