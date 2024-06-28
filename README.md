@@ -1,24 +1,55 @@
-# README
+# Vacation Scheduler API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This repository contains a Ruby on Rails API application for managing vacation schedules.
 
-Things you may want to cover:
+## Overview
 
-* Ruby version
+This API provides endpoints to manage users and their vacations using JSON format. Authentication is handled via JWT tokens.
 
-* System dependencies
+## Setup
 
-* Configuration
+### Prerequisites
 
-* Database creation
+- Ruby version 3.3.0
+- Rails
+- PostgreSQL database
 
-* Database initialization
+### Installation
 
-* How to run the test suite
+```bash
+# Clone the repository
+git clone https://github.com/your_username/vacation_scheduler_api.git
+cd vacation_scheduler_api
 
-* Services (job queues, cache servers, search engines, etc.)
+# Install dependencies
+bundle install
 
-* Deployment instructions
+# Set up the database
+rails db:create
+rails db:migrate
 
-* ...
+# Start the Rails server
+rails server 
+```
+The API server should now be running locally at http://localhost:3000.
+
+## Endpoints
+### Users
+- POST /users: Create a new user.
+- GET /users/:id: Get details of a user.
+
+### Sessions
+- POST /api/v1/login: Authenticate and generate JWT token.
+
+### Vacations
+- GET /api/v1/vacations: Get all vacations.
+- POST /api/v1/vacations: Create a new vacation.
+- GET /api/v1/vacations/:id: Get details of a vacation.
+- PUT /api/v1/vacations/:id: Update a vacation.
+- DELETE /api/v1/vacations/:id: Delete a vacation.
+
+## Testing
+RSpec is used for testing. Run the tests with:
+```
+bundle exec rspec
+```
